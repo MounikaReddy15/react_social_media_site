@@ -45,6 +45,7 @@ export function signup(name, email, password, confirmPassword) {
       .then((data) => {
         console.log('data', data);
         if (data.success) {
+          console.log('success');
           localStorage.setItem('token', data.data.token);
           // dispatch an action to save user
           dispatch(signupSuccess(data.data.user));
