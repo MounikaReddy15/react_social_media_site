@@ -1,6 +1,6 @@
 import { APIUrls } from '../helpers/urls';
 import { SIGNUP_FAIL, SIGNUP_SUCCESS, SIGNUP_START } from './actionTypes';
-import { getFormData } from '../helpers/utils';
+import { getFormBody } from '../helpers/utils';
 
 export function startSignup() {
   return {
@@ -25,6 +25,7 @@ export function signupSuccess(user) {
 //  const token = <your_token>;
 
 export function signup(name, email, password, confirmPassword) {
+  console.log('signup');
   return (dispatch) => {
     const url = APIUrls.signup();
     fetch(url, {
@@ -33,7 +34,7 @@ export function signup(name, email, password, confirmPassword) {
         'Content-Type': 'application/x-www-form-urlencoded',
         // Authorization: `Bearer ${token}`, // Remove Auth if not required
       },
-      body: getFormData({
+      body: getFormBody({
         name,
         password,
         confirm_password: confirmPassword,
